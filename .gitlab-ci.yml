@@ -5,7 +5,7 @@ variables:
 
 before_script:
   - echo "$CI_JOB_TOKEN"
-  - apk add yarn gettext
+  - apt-get install yarn gettext
   - npm set registry https://npm.xena.rocks
   - npm install
 
