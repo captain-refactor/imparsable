@@ -20,10 +20,12 @@ build:
   stage: build
   script:
     - npm run build
+    - npm run test
 
 publish:
   stage: deploy
   script:
+    - npm run build
     - npm version --no-git-tag-version $CI_COMMIT_REF_NAME
     - npm publish
   only:

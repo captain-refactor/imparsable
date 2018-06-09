@@ -18,7 +18,8 @@
     "typescript": "2.8.3"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "node ./build/test"
   },
   "publishConfig": {
     "registry": "https://npm.xena.rocks"
