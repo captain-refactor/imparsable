@@ -24,7 +24,7 @@ build:
 publish:
   stage: deploy
   script:
-    - npm version $CI_COMMIT_REF_NAME
+    - npm version --no-git-tag-version $CI_COMMIT_REF_NAME
     - npm publish
   only:
     - tags
