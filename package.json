@@ -1,23 +1,26 @@
 {
   "name": "imparsable",
-  "version": "1.0.2",
+  "version": "0.0.2",
   "description": "Small library for easy json parsing.",
   "main": "build/index.js",
   "types": "types/index.d.ts",
   "author": "Jan Kremen",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
+    "@types/core-js": "^0.9.46",
+    "@types/csv-parse": "^1.1.11",
+    "@types/csv-stringify": "^1.4.2",
     "core-js": "^2.5.5",
     "csv-parse": "^2.0.4",
     "csv-stringify": "^2.0.4",
     "deep-copy": "^1.4.2",
-    "typescript": "2.8.3",
-    "@types/core-js": "^0.9.46",
-    "@types/csv-parse": "^1.1.11",
-    "@types/csv-stringify": "^1.4.2"
+    "typescript": "2.8.3"
   },
   "scripts": {
     "build": "tsc"
+  },
+  "publishConfig": {
+    "registry": "https://npm.xena.rocks"
   }
 }
