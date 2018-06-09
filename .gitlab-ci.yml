@@ -20,7 +20,7 @@ build:
   stage: build
   script:
     - npm run build
-    - npm run tests
+    - npm run test
 
 publish:
   stage: deploy

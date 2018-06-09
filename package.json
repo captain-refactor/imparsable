@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "node ./build/test"
+    "test": "node ./build/tests"
   },
   "publishConfig": {
     "registry": "https://npm.xena.rocks"
