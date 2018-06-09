@@ -1,0 +1,31 @@
+image: node:latest
+
+variables:
+  PROJECT: imparsable
+
+before_script:
+  - echo "$CI_JOB_TOKEN"
+  - apk add yarn gettext
+  - npm set registry https://npm.xena.rocks
+  - npm install
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - npm build
+
+publish:
+  stage: deploy
+  script:
+    - npm version $CI_COMMIT_REF_NAME
+    - npm publish
+  only:
+    - tags
