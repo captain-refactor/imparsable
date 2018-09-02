@@ -8,10 +8,5 @@
         "emitDecoratorMetadata": true,
         "downlevelIteration": true,
         "declaration": true
-    },
-    "exclude": [
-        "node_modules",
-        "types",
-        "build"
-    ]
+    }
 }
