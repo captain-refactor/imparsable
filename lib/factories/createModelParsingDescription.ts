@@ -1,7 +1,7 @@
-import {ImparsableConstructor} from "../parsing/json/Imparsable";
-import {Property, PropertyID} from "../Property";
+import {ImparsableConstructor} from "..";
+import {Property, PropertyID} from "../property";
 import {ModelParsingDescription, ParsingDescription} from "../types";
-import {isXBeforeParsing, isXOnParsed, XBeforeParsing} from "../parsing/json/Imparsable.interfaces";
+import {isXBeforeParsing, isXOnParsed} from "..";
 import {ParsableType} from "../common";
 
 
@@ -15,7 +15,7 @@ export const defaultModelFactory = function <T>(this: ModelParsingDescription<T>
         newInstance.beforeParsing(obj);
     }
 
-    let propertiesArray: (keyof T)[] = Object.getOwnPropertyNames(this.properties) as any;
+    let propertiesArray: (keyof T & string)[] = Object.getOwnPropertyNames(this.properties) as any;
     for (let key of propertiesArray) {
         let description: Property<any> = this.properties[key];
         let propertyValue: any = obj[description.parsedName];
@@ -38,11 +38,11 @@ export const defaultModelFactory = function <T>(this: ModelParsingDescription<T>
 
 const toParsable = function <T>(this: ModelParsingDescription<T>, obj: T): any {
     let resultObject: { [key: string]: ParsableType } = {};
-    let propertiesArray: (keyof T)[] = Object.getOwnPropertyNames(this.properties) as any;
+    let propertiesArray: (keyof T & string)[] = Object.getOwnPropertyNames(this.properties) as any;
     for (let key of propertiesArray) {
         let description: ParsingDescription<any> & PropertyID = this.properties[key];
         let propertyValue: any = obj[description.name];
-        resultObject[description.parsedName] = description.toParsable(propertyValue);
+        resultObject[description.parsedName as any] = description.toParsable(propertyValue);
     }
     return resultObject;
 };

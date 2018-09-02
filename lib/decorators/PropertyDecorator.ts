@@ -1,6 +1,6 @@
 import {Constructor} from "./ClassDecorator";
-import {DescriptionManager} from "../DescriptionManager";
-import {Property} from "../Property";
+import {DescriptionManager} from "../description-manager";
+import {Property} from "../property";
 import {CollectionProperty, ParsingDescription} from "../types";
 
 //TODO: solve how to do input parameters

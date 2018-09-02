@@ -1,4 +1,4 @@
-import {DescriptionManager} from "../../DescriptionManager";
+import {DescriptionManager} from "../../description-manager";
 import {Constructor} from "../../decorators/ClassDecorator";
 import {ParsingDescription} from "../../types";
 

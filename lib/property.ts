@@ -1,11 +1,13 @@
 import {ParsingDescription} from "./types";
 
+type ParsedName = number | string;
+
 export class PropertyID {
-    name: string;
-    parsedName: string;
+    name: PropertyKey;
+    parsedName: PropertyKey;
     getOnly: boolean;
 
-    constructor(name: string, parsedName: string = name, getOnly:boolean = false) {
+    constructor(name: PropertyKey, parsedName: PropertyKey = name, getOnly: boolean = false) {
         this.name = name;
         this.parsedName = parsedName;
         this.getOnly = getOnly;

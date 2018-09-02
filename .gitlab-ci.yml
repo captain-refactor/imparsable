@@ -6,6 +6,7 @@ variables:
 before_script:
   - echo "$CI_JOB_TOKEN"
   - npm set registry https://npm.xena.rocks
+  - npm install typescript@2.9.2
   - npm install
 
 cache:

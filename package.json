@@ -1,27 +1,29 @@
 {
-  "name": "imparsable",
-  "version": "0.0.2",
-  "description": "Small library for easy json parsing.",
-  "main": "build/index.js",
-  "types": "types/index.d.ts",
-  "author": "Jan Kremen",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@types/core-js": "^0.9.46",
-    "@types/csv-parse": "^1.1.11",
-    "@types/csv-stringify": "^1.4.2",
-    "core-js": "^2.5.5",
-    "csv-parse": "^2.0.4",
-    "csv-stringify": "^2.0.4",
-    "deep-copy": "^1.4.2",
-    "typescript": "2.8.3"
-  },
-  "scripts": {
-    "build": "tsc",
-    "test": "node ./build/tests"
-  },
-  "publishConfig": {
-    "registry": "https://npm.xena.rocks"
-  }
+    "name": "imparsable",
+    "version": "0.0.0",
+    "description": "Small library for easy json parsing.",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "author": "Jan Kremen",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@types/core-js": "^0.9.46",
+        "@types/node": "^10.5.2",
+        "core-js": "^2.5.5",
+        "deep-copy": "^1.4.2",
+        "typescript": "^3.0.3"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "node ./build/tests"
+    },
+    "publishConfig": {
+        "registry": "https://npm.xena.rocks"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.5",
+        "mocha": "^5.2.0",
+        "ts-node": "^7.0.1"
+    }
 }

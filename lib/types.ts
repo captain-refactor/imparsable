@@ -1,4 +1,4 @@
-import {Property, PropertyID} from "./Property";
+import {Property, PropertyID} from "./property";
 import {IDictionary, ParsableType} from "./common";
 import {ImparsableConstructor} from "./parsing/json/Imparsable";
 

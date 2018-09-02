@@ -1,5 +1,5 @@
 import {Imparsable} from "../parsing/json/Imparsable";
-import {DescriptionManager} from "../DescriptionManager";
+import {DescriptionManager} from "../description-manager";
 import {ParsingDescription} from "../types";
 
 

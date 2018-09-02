@@ -1,5 +1,5 @@
 export * from './common';
-export * from './Property';
+export * from './property';
 // export * from './parsing/csv/CsvStringify';
 // export * from './parsing/csv/CsvBuilder';
 export * from './parsing/json/Imparsable';

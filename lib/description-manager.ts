@@ -1,9 +1,9 @@
+const dcopy = require('deep-copy');
 import {Reflect} from 'core-js/es7';
 import {IMPARSABLE} from "./common";
-const dcopy = require('deep-copy');
 import {ImparsableConstructor} from "./parsing/json/Imparsable";
 
-import {Property, PropertyID} from "./Property";
+import {Property, PropertyID} from "./property";
 import {
     CollectionParsingDescription, ModelParsingDescription,
     ParsingDescription
@@ -33,13 +33,13 @@ export class DescriptionManager {
             target.constructor as ImparsableConstructor<T>,
             ()=> createModelParsingDescription<T>(target.constructor as any)
         );
-        classDescription.properties[key] = property;
+        classDescription.properties[key as any] = property;
         // classDescription.classConstructor = target.constructor as any;
         this.setClassDescription(target.constructor as ImparsableConstructor<T>, classDescription);
     }
 
     private static getPropertyType<I>(instance: I, property: keyof I): any {
-        return Reflect.getMetadata('design:type', instance, property);
+        return Reflect.getMetadata('design:type', instance, property as any);
     }
 
     public static getClassDescription<T>(constructor: ImparsableConstructor<T>, defaultValueFactory: ()=>ModelParsingDescription<T> = undefined): ModelParsingDescription<T> {
