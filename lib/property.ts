@@ -1,4 +1,4 @@
-import {ParsingDescription} from "./types";
+import {ParsingSchema} from "./types";
 
 type ParsedName = number | string;
 
@@ -14,5 +14,5 @@ export class PropertyID {
     }
 }
 
-export interface Property<T> extends ParsingDescription<T>, PropertyID {
+export interface Property<T> extends ParsingSchema<T>, PropertyID {
 }

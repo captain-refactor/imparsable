@@ -1,6 +1,7 @@
 import {DescriptionManager} from "../../description-manager";
-import {Constructor} from "../../decorators/ClassDecorator";
-import {ParsingDescription} from "../../types";
+import {Constructor} from "../..";
+import {ParsingSchema} from "../../types";
+import {ValidationError} from "../../validation/validator";
 
 
 export interface ImparsableConstructor<T> {
@@ -15,7 +16,7 @@ export class Imparsable {
         return this.parseProperty(description, obj);
     }
 
-    public static parseProperty<T>(description: Pick<ParsingDescription<T>, 'factory'>, obj: any): T {
+    public static parseProperty<T>(description: Pick<ParsingSchema<T>, 'factory'>, obj: any): T {
         if (obj === null) return null;
         if (obj === undefined) return undefined;
         if (description.factory === undefined) return obj as T;
@@ -27,8 +28,17 @@ export class Imparsable {
         return Imparsable.parseFromDescription(desc, json);
     }
 
+    public static validate<T>(item: T): ValidationError[] | null {
+        let schema = DescriptionManager.getDescription(item.constructor as any);
+        let {validators} = schema;
+        if (!validators || validators.length == 0) return null;
+        let errors = validators.map(validator => validator(item));
+        if (errors.length == 0) return null;
+        return errors;
+    }
 
-    public static parseFromDescription<T>(description: Pick<ParsingDescription<T>, 'factory'>, jsonData: string): T {
+
+    public static parseFromDescription<T>(description: Pick<ParsingSchema<T>, 'factory'>, jsonData: string): T {
         return Imparsable.parseProperty(description, JSON.parse(jsonData));
     }
 

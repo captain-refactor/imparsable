@@ -1,7 +1,7 @@
-import {ParsingDescription} from "../types";
+import {ParsingSchema} from "../types";
 import {createParsingDescription} from "../factories/createParsingDescription";
 
-export const DATE_DESCRIPTION: ParsingDescription<Date> = Object.assign(createParsingDescription(Date),
+export const DATE_DESCRIPTION: ParsingSchema<Date> = Object.assign(createParsingDescription(Date),
 {
     factory : (obj: string): Date => {
         let date = new Date(obj);

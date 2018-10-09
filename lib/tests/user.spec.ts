@@ -1,7 +1,8 @@
-import {Imparsable, ImparsableClass, property} from "..";
+import 'reflect-metadata';
+import {Imparsable, imparsable, property} from "..";
 import * as assert from 'assert';
 
-@ImparsableClass()
+@imparsable()
 export class UserSpec {
     @property({parsedName: 'Name'}) name: string = 'John';
     @property({parsedName: 'Surname'}) surname: string = 'Doe';
@@ -12,17 +13,17 @@ export class UserSpec {
     }
 }
 
-@ImparsableClass()
+@imparsable()
 export class SuperUser extends UserSpec {
     @property() role: string = 'role';
 }
 
-@ImparsableClass()
+@imparsable()
 export class OverriddenSuperUser extends UserSpec {
     @property({parsedName: 'Role'}) role: string = 'role';
 }
 
-@ImparsableClass()
+@imparsable()
 export class AdminUser extends UserSpec {
     @property() virgin: 'yes' | 'no' = 'no';
 }

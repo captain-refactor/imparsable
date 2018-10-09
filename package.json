@@ -1,29 +1,25 @@
 {
-    "name": "imparsable",
-    "version": "0.0.0",
-    "description": "Small library for easy json parsing.",
-    "main": "build/index.js",
-    "types": "build/index.d.ts",
-    "author": "Jan Kremen",
-    "license": "MIT",
-    "private": false,
-    "dependencies": {
-        "@types/core-js": "^0.9.46",
-        "@types/node": "^10.5.2",
-        "core-js": "^2.5.5",
-        "deep-copy": "^1.4.2",
-        "typescript": "^3.0.3"
-    },
-    "scripts": {
-        "build": "tsc",
-        "test": "node ./build/tests"
-    },
-    "publishConfig": {
-        "registry": "https://npm.xena.rocks"
-    },
-    "devDependencies": {
-        "@types/mocha": "^5.2.5",
-        "mocha": "^5.2.0",
-        "ts-node": "^7.0.1"
-    }
+  "name": "imparsable",
+  "version": "0.0.0",
+  "description": "Small library for easy json parsing.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "author": "Jan Kremen",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "deep-copy": "^1.4.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha -r ts-node/register './**/*.spec.ts'"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.2",
+    "typescript": "^3.0.3",
+    "reflect-metadata": "^0.1.12",
+    "@types/mocha": "^5.2.5",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1"
+  }
 }

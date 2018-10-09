@@ -1,6 +1,6 @@
-import {Imparsable} from "../parsing/json/Imparsable";
+import {Imparsable} from "..";
 import {DescriptionManager} from "../description-manager";
-import {ParsingDescription} from "../types";
+import {ParsingSchema} from "../types";
 
 
 export type Constructor<T extends Object> = {
@@ -9,9 +9,9 @@ export type Constructor<T extends Object> = {
 
 export type DecoratedClass<C extends Constructor<Object>> = C & { prototype: { toJSON(): any } };
 
-export type ClassDecoratorOptions<T> = Partial<ParsingDescription<T>>
+export type ClassDecoratorOptions<T> = Partial<ParsingSchema<T>>
 
-export function ImparsableClass<T>(parsingDescription?: ClassDecoratorOptions<T>) {
+export function imparsable<T>(parsingDescription?: ClassDecoratorOptions<T>) {
 
     return function <C extends Constructor<T>>(constructor: C): DecoratedClass<C> {
         let maker = new ClassDecoratorMaker<T, C>();

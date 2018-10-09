@@ -7,5 +7,5 @@ export * from './parsing/json/Imparsable.interfaces';
 export * from './factories/createParsingDescription';
 export * from './factories/createModelParsingDescription';
 export * from './types';
-export * from './decorators/PropertyDecorator';
-export * from './decorators/ClassDecorator';
+export * from './decorators/property';
+export * from './decorators/imparsable';

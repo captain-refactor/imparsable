@@ -1,7 +1,7 @@
-import {Constructor} from "./ClassDecorator";
+import {Constructor} from "./imparsable";
 import {DescriptionManager} from "../description-manager";
 import {Property} from "../property";
-import {CollectionProperty, ParsingDescription} from "../types";
+import {CollectionProperty, ParsingSchema} from "../types";
 
 //TODO: solve how to do input parameters
 let d: PropertyDecorator = () => 5;
@@ -17,7 +17,7 @@ export function property(parameters?: Partial<Property<any>>) {
 }
 
 
-export function collectionOf<I>(input: Constructor<I>, parameters?: Partial<CollectionProperty<any>>, itemsDescription?: Partial<ParsingDescription<I>>) {
+export function collectionOf<I>(input: Constructor<I>, parameters?: Partial<CollectionProperty<any>>, itemsDescription?: Partial<ParsingSchema<I>>) {
     if (parameters == null) parameters = {};
     parameters.itemProperty = DescriptionManager.autoCreateComplexDescription(Object.assign({
         type: input

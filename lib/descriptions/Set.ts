@@ -1,7 +1,7 @@
-import {ParsingDescription} from "../types";
+import {ParsingSchema} from "../types";
 import {createCollectionParsingDescription} from "../factories/createCollectionParsingDescription";
 
-export const SET_DESCRIPTION: ParsingDescription<Set<any>> = createCollectionParsingDescription(Set);
+export const SET_DESCRIPTION: ParsingSchema<Set<any>> = createCollectionParsingDescription(Set);
 SET_DESCRIPTION.factory = (arr: any[]) => {
     let s = new Set();
     for (let item of arr) {

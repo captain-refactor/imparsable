@@ -1,11 +1,11 @@
 import {ImparsableConstructor} from "..";
 import {Property, PropertyID} from "../property";
-import {ModelParsingDescription, ParsingDescription} from "../types";
+import {ModelParsingSchema, ParsingSchema} from "../types";
 import {isXBeforeParsing, isXOnParsed} from "..";
 import {ParsableType} from "../common";
 
 
-export const defaultModelFactory = function <T>(this: ModelParsingDescription<T>, obj: any): T {
+export const defaultModelFactory = function <T>(this: ModelParsingSchema<T>, obj: any): T {
     if (obj === null) return null;
     if (obj === undefined) return undefined;
 
@@ -36,18 +36,18 @@ export const defaultModelFactory = function <T>(this: ModelParsingDescription<T>
 };
 
 
-const toParsable = function <T>(this: ModelParsingDescription<T>, obj: T): any {
+const toParsable = function <T>(this: ModelParsingSchema<T>, obj: T): any {
     let resultObject: { [key: string]: ParsableType } = {};
     let propertiesArray: (keyof T & string)[] = Object.getOwnPropertyNames(this.properties) as any;
     for (let key of propertiesArray) {
-        let description: ParsingDescription<any> & PropertyID = this.properties[key];
+        let description: ParsingSchema<any> & PropertyID = this.properties[key];
         let propertyValue: any = obj[description.name];
         resultObject[description.parsedName as any] = description.toParsable(propertyValue);
     }
     return resultObject;
 };
 
-export function createModelParsingDescription<T, C extends ImparsableConstructor<T> = ImparsableConstructor<T>>(constructor: C): ModelParsingDescription<T> {
+export function createModelParsingDescription<T, C extends ImparsableConstructor<T> = ImparsableConstructor<T>>(constructor: C): ModelParsingSchema<T> {
     return {
         factory: defaultModelFactory,
         properties: {},
