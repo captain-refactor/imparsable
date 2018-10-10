@@ -37,7 +37,7 @@ describe('Imparsable parsing ', function () {
         Role: 'mage'
     };
     it('should parse right value on User', function () {
-        let user = Imparsable.parseObject(UserSpec, inputData);
+        let user = Imparsable.parsePojo(UserSpec, inputData);
         assert.strictEqual(user.name, 'Jan');
         assert.ok(!(user as any).Name);
         assert.strictEqual(user.surname, 'Doe');
@@ -46,7 +46,7 @@ describe('Imparsable parsing ', function () {
     });
 
     it('should parse right value on SuperUser', function () {
-        let user = Imparsable.parseObject(SuperUser, inputData);
+        let user = Imparsable.parsePojo(SuperUser, inputData);
         assert.strictEqual(user.name, 'Jan');
         assert.ok(!(user as any).Name);
         assert.strictEqual(user.surname, 'Doe');
@@ -55,7 +55,7 @@ describe('Imparsable parsing ', function () {
     });
 
     it('should parse right value on OverriddenSuperUser', function () {
-        let user = Imparsable.parseObject(OverriddenSuperUser, inputData);
+        let user = Imparsable.parsePojo(OverriddenSuperUser, inputData);
         assert.strictEqual(user.name, 'Jan');
         assert.ok(!(user as any).Name);
         assert.strictEqual(user.surname, 'Doe');

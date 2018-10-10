@@ -1,0 +1,74 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+  - image: circleci/node:10
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+    - run: mv deploy.npmrc .npmrc
+
+    - run: npm install
+
+    - run: npm run build
+
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+    - persist_to_workspace:
+        root: ~/repo
+        paths: .
+
+    # run tests!
+    - run: npm run test
+  deploy:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: ~/repo
+    - run:
+        name: Update version
+        command: npm version $CIRCLE_TAG --allow-same-version
+    - run:
+        name: Publish package
+        command: npm publish
+  test:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: ~/repo
+    - run: npm run coverage:test
+    - run: npm run coverage:report
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+    - test:
+        requires:
+        - build
+    - build:
+        filters:
+          tags:
+            only: /.*/
+    - deploy:
+        requires:
+        - build
+        - test
+        filters:
+          tags:
+            only: /.*/
+          branches:
+            ignore: /.*/
