@@ -12,6 +12,7 @@ export interface IValidationError {
 
 export class Validator {
     public static validate<T>(item: T): IValidationError[] | null {
+        //TODO: validate childs
         const schema: ParsingSchema<T> = DescriptionManager.getDescription(item.constructor as any);
         const {validators} = schema;
         if (!validators || validators.length === 0) {
