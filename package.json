@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "deep-copy": "^1.4.2"
+    "deep-copy": "^1.4.2",
+    "nyc": "^13.1.0"
   },
   "scripts": {
     "build": "tsc",
