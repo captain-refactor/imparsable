@@ -8,8 +8,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "deep-copy": "^1.4.2",
-    "nyc": "^13.1.0"
+    "deep-copy": "^1.4.2"
   },
   "scripts": {
     "build": "tsc",
@@ -23,6 +22,7 @@
     "mocha": "^5.2.0",
     "reflect-metadata": "^0.1.12",
     "ts-node": "^7.0.1",
-    "typescript": "^3.1.2"
+    "typescript": "^3.1.2",
+    "nyc": "^13.1.0"
   }
 }
