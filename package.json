@@ -2,8 +2,8 @@
   "name": "imparsable",
   "version": "0.0.0",
   "description": "Small library for easy json parsing and validation.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Jan Kremen",
   "license": "MIT",
   "private": false,
@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "test": "mocha -r ts-node/register './lib/**/*.spec.ts'",
-    "coverage:test": "nyc mocha ./lib/**/*.spec.js",
+    "coverage:test": "nyc mocha ./dist/**/*.spec.js",
     "coverage:report": "nyc report --reporter=json && codecov -f coverage/*.json"
   },
   "devDependencies": {
